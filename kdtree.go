@@ -188,10 +188,14 @@ func knn(p Point, k int, start *node, currentAxis int, nearestPQ *pq.PriorityQue
 	}
 }
 
+func squaref32(f float64) float64 {
+	return f * f
+}
+
 func distance(p1, p2 Point) float64 {
 	sum := 0.
 	for i := 0; i < p1.Dimensions(); i++ {
-		sum += math.Pow(p1.Dimension(i)-p2.Dimension(i), 2.0)
+		sum += squaref32(p1.Dimension(i)-p2.Dimension(i))
 	}
 	return math.Sqrt(sum)
 }
